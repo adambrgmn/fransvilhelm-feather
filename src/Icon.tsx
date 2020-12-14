@@ -2,6 +2,7 @@ import React, { forwardRef, createContext, useContext } from 'react';
 
 export interface IconProps {
   baseline?: boolean;
+  children: React.ReactNode;
 }
 
 const styles: Record<'span' | 'svg' | 'baseline', React.CSSProperties> = {
@@ -15,6 +16,11 @@ const styles: Record<'span' | 'svg' | 'baseline', React.CSSProperties> = {
   svg: {
     width: '1em',
     height: '1em',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
   },
   baseline: {
     position: 'absolute',
@@ -29,15 +35,17 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>(
     return (
       <span ref={ref} style={styles.span}>
         <svg
+          aria-hidden
+          vectorEffect="non-scaling-stroke"
           {...ctx.svgProps}
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
           viewBox="0 0 24 24"
           style={{
-            ...ctx.svgStyle,
             ...styles.svg,
             ...(baseline ? styles.baseline : null),
+            ...ctx.svgStyle,
           }}
         >
           {children}
@@ -53,7 +61,8 @@ type OmittedProps =
   | 'width'
   | 'width'
   | 'height'
-  | 'viewBox';
+  | 'viewBox'
+  | 'xmlns';
 
 interface TIconContext {
   svgProps: Omit<React.SVGProps<SVGSVGElement>, OmittedProps>;
@@ -65,12 +74,7 @@ const defaultContext: TIconContext = {
     vectorEffect: 'non-scaling-stroke',
     'aria-hidden': true,
   },
-  svgStyle: {
-    fill: 'none',
-    stroke: 'currentColor',
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-  },
+  svgStyle: {},
 };
 
 const IconContext = createContext<TIconContext>(defaultContext);
