@@ -23,6 +23,7 @@
   ],
   "scripts": {
     "icons": "node ./scripts/build-icons.mjs",
+    "feather": "node ./scripts/update-feather.mjs",
     "build": "yarn icons && microbundle --jsx React.createElement",
     "postbuild": "rm -rf dist/__tests__",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js",
@@ -31,6 +32,9 @@
     "release": "yarn build && yarn changeset publish"
   },
   "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4",
+    "@actions/github": "^4.0.0",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
@@ -39,6 +43,7 @@
     "@fransvilhelm/changeset-changelog": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
+    "@types/axios": "^0.14.0",
     "@types/feather-icons": "^4.7.0",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.165",
@@ -49,6 +54,7 @@
     "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
+    "axios": "^0.21.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.15.0",
     "eslint-config-react-app": "^6.0.0",
@@ -59,6 +65,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.10.1",
+    "execa": "^5.0.0",
     "feather-icons": "^4.28.0",
     "husky": "^4.3.6",
     "jest": "^26.6.3",
