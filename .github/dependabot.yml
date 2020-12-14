@@ -9,3 +9,6 @@ updates:
       - 'dependencies'
       - 'autosquash'
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: 'feather-icons'
+      - dependency-name: '@types/feather-icons'
