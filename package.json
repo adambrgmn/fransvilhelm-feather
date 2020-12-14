@@ -20,6 +20,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node ./scripts/build-icons.mjs && microbundle --jsx React.createElement",
+    "postbuild": "rm -rf dist/__tests__",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js",
     "test": "jest",
     "type-check": "tsc --noEmit",
