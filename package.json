@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/adambrgmn/fransvilhelm-feather#readme",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "node ./scripts/build-icons.mjs && microbundle --jsx React.createElement",
     "postbuild": "rm -rf dist/__tests__",
