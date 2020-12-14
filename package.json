@@ -1,6 +1,6 @@
 {
   "name": "@fransvilhelm/feather",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Feather Icons as React components",
   "source": "src/index.ts",
   "main": "dist/fransvilhelm-feather.js",
