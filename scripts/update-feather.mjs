@@ -4,6 +4,7 @@ import { exec } from '@actions/exec';
 import * as github from '@actions/github';
 import * as core from '@actions/core';
 import axios from 'axios';
+import semver from 'semver';
 
 let githubToken = process.env.GITHUB_TOKEN;
 
@@ -24,9 +25,19 @@ const readJson = (filePath) => {
     'https://unpkg.com/feather-icons/package.json',
   );
 
-  if (currentFeather.version === feather.version) {
-    console.log('No version change. Ignoring.');
-    return;
+  let diff = semver.diff(currentFeather.version, feather.version);
+  switch (diff) {
+    case 'patch':
+    case 'premajor':
+    case 'preminor':
+    case 'prepatch':
+    case 'prerelease':
+      console.log('Patch or prerelease found. Ignoring.');
+      return;
+    case null:
+      console.log('No version bump detected. Ignoring.');
+      return;
+    default:
   }
 
   let repo = `${github.context.repo.owner}/${github.context.repo.repo}`;
@@ -64,7 +75,7 @@ const readJson = (filePath) => {
 
   let changeset = `
 ---
-'@fransvilhelm/feather': patch
+'@fransvilhelm/feather': ${diff}
 ---
 
 Bump feather-icons to version ${feather.version}.
