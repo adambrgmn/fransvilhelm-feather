@@ -1,3 +1,2 @@
-export function log(message: string) {
-  console.log(message);
-}
+export * from './Icon';
+export * from './Icons';
