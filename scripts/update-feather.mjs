@@ -9,8 +9,8 @@ import semver from 'semver';
 let githubToken = process.env.GITHUB_TOKEN;
 
 const relativePath = (...paths) => path.join(process.cwd(), ...paths);
-const readJson = (filePath) => {
-  return JSON.parse(fs.readFile(relativePath(filePath), 'utf-8'));
+const readJson = async (filePath) => {
+  return JSON.parse(await fs.readFile(relativePath(filePath), 'utf-8'));
 };
 
 (async () => {
@@ -19,7 +19,9 @@ const readJson = (filePath) => {
     return;
   }
 
-  let currentFeather = readJson('node_modules/feather-icons/package.json');
+  let currentFeather = await readJson(
+    'node_modules/feather-icons/package.json',
+  );
 
   let { data: feather } = await axios.get(
     'https://unpkg.com/feather-icons/package.json',
