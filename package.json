@@ -22,7 +22,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "node ./scripts/build-icons.mjs && microbundle --jsx React.createElement",
+    "icons": "node ./scripts/build-icons.mjs",
+    "build": "yarn icons && microbundle --jsx React.createElement",
     "postbuild": "rm -rf dist/__tests__",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js",
     "test": "jest",
