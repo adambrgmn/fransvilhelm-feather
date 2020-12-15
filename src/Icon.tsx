@@ -2,7 +2,6 @@ import React, { forwardRef, createContext, useContext } from 'react';
 
 export interface IconProps {
   baseline?: boolean;
-  children: React.ReactNode;
 }
 
 const styles: Record<'span' | 'svg' | 'baseline', React.CSSProperties> = {
@@ -28,32 +27,33 @@ const styles: Record<'span' | 'svg' | 'baseline', React.CSSProperties> = {
   },
 };
 
-export const Icon = forwardRef<HTMLSpanElement, IconProps>(
-  ({ baseline, children }, ref) => {
-    const ctx = useContext(IconContext);
+export const Icon = forwardRef<
+  HTMLSpanElement,
+  IconProps & { children: React.ReactNode }
+>(({ baseline, children }, ref) => {
+  const ctx = useContext(IconContext);
 
-    return (
-      <span ref={ref} style={styles.span}>
-        <svg
-          aria-hidden
-          vectorEffect="non-scaling-stroke"
-          {...ctx.svgProps}
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          style={{
-            ...styles.svg,
-            ...(baseline ? styles.baseline : null),
-            ...ctx.svgStyle,
-          }}
-        >
-          {children}
-        </svg>
-      </span>
-    );
-  },
-);
+  return (
+    <span ref={ref} style={styles.span}>
+      <svg
+        aria-hidden
+        vectorEffect="non-scaling-stroke"
+        {...ctx.svgProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        style={{
+          ...styles.svg,
+          ...(baseline ? styles.baseline : null),
+          ...ctx.svgStyle,
+        }}
+      >
+        {children}
+      </svg>
+    </span>
+  );
+});
 
 type OmittedProps =
   | 'style'
