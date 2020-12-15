@@ -23,5 +23,13 @@ jobs:
 
       - name: check feather
         run: yarn feather
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.AUTOSQUASH_TOKEN }}
+          commit-message: Update feather-icons
+          title: Update feather-icons
+          body: Update feather-icons
+          branch: update-feather-icons
+          base: main
