@@ -33,3 +33,4 @@ jobs:
           body: Update feather-icons
           branch: update-feather-icons
           base: main
+          labels: autosquash
