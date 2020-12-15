@@ -1,4 +1,5 @@
 node_modules
 dist
 src/Icons.tsx
+src/stories/Icons.stories.tsx
 coverage
