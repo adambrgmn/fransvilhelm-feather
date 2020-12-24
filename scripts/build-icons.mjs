@@ -48,19 +48,28 @@ export const All: Story<IconProps & { icon: keyof typeof Icons }> = (props) => {
 `;
 
 (async () => {
-  let components = [];
-  let stories = [];
+  try {
+    let components = [];
+    let stories = [];
 
-  for (let key in icons) {
-    let icon = icons[key];
-    let name = pascalCase(icon.name);
-    components.push(component(icon.contents, name).trim());
-    stories.push(story(name).trim());
+    for (let key in icons) {
+      let icon = icons[key];
+      let name = pascalCase(icon.name);
+      components.push(component(icon.contents, name).trim());
+      stories.push(story(name).trim());
+    }
+
+    let fileContent = [componentBase.trim(), ...components].join('\n\n') + '\n';
+    await fs.writeFile(relPath('./src/Icons.tsx'), fileContent);
+
+    let storyContent = [storyBase.trim(), ...stories].join('\n\n') + '\n';
+    await fs.mkdir(relPath('./src/stories'), { recursive: true });
+    await fs.writeFile(
+      relPath('./src/stories/Icons.stories.tsx'),
+      storyContent,
+    );
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
   }
-
-  let fileContent = [componentBase.trim(), ...components].join('\n\n') + '\n';
-  await fs.writeFile(relPath('./src/Icons.tsx'), fileContent);
-
-  let storyContent = [storyBase.trim(), ...stories].join('\n\n') + '\n';
-  await fs.writeFile(relPath('./src/stories/Icons.stories.tsx'), storyContent);
 })();
