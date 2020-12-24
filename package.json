@@ -1,13 +1,13 @@
 {
   "name": "@fransvilhelm/feather",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Feather Icons as React components",
   "source": "src/index.ts",
-  "main": "dist/fransvilhelm-feather.js",
-  "module": "dist/fransvilhelm-feather.esm.js",
-  "esmodule": "dist/fransvilhelm-feather.modern.js",
-  "umd:main": "dist/fransvilhelm-feather.umd.js",
-  "types": "dist/fransvilhelm-feather.d.ts",
+  "main": "dist/feather.js",
+  "module": "dist/feather.esm.js",
+  "esmodule": "dist/feather.modern.js",
+  "umd:main": "dist/feather.umd.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adambrgmn/fransvilhelm-feather.git"
