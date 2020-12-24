@@ -8,8 +8,8 @@ const relPath = (...p) => join(process.cwd(), ...p);
 
 const component = (contents, name) => {
   return `
-export const ${name} = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
-  return <Icon {...props}>${contents}</Icon>;
+export const ${name} = forwardRef<HTMLSpanElement, IconProps>(function ${name} (props: IconProps, ref) {
+  return <Icon {...props} ref={ref}>${contents}</Icon>;
 });`;
 };
 
