@@ -59,7 +59,6 @@ type OmittedProps =
   | 'style'
   | 'className'
   | 'width'
-  | 'width'
   | 'height'
   | 'viewBox'
   | 'xmlns';
@@ -70,10 +69,7 @@ interface TIconContext {
 }
 
 const defaultContext: TIconContext = {
-  svgProps: {
-    vectorEffect: 'non-scaling-stroke',
-    'aria-hidden': true,
-  },
+  svgProps: {},
   svgStyle: {},
 };
 
