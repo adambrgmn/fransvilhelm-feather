@@ -34,8 +34,8 @@ it('can be configured via context', () => {
   render(
     <IconProvider
       value={{
-        svgProps: { 'aria-hidden': false },
-        svgStyle: { strokeWidth: 10 },
+        'aria-hidden': false,
+        style: { strokeWidth: 10 },
       }}
     >
       <Icon>
