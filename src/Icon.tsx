@@ -37,8 +37,8 @@ export const Icon = forwardRef<
     <span ref={ref} style={styles.span}>
       <svg
         aria-hidden
-        vectorEffect="non-scaling-stroke"
-        {...ctx.svgProps}
+        focusable={false}
+        {...ctx}
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -46,7 +46,7 @@ export const Icon = forwardRef<
         style={{
           ...styles.svg,
           ...(baseline ? styles.baseline : null),
-          ...ctx.svgStyle,
+          ...ctx.style,
         }}
       >
         {children}
@@ -55,27 +55,11 @@ export const Icon = forwardRef<
   );
 });
 
-type OmittedProps =
-  | 'style'
-  | 'className'
-  | 'width'
-  | 'width'
-  | 'height'
-  | 'viewBox'
-  | 'xmlns';
+type OmittedProps = 'className' | 'width' | 'height' | 'viewBox' | 'xmlns';
 
-interface TIconContext {
-  svgProps: Omit<React.SVGProps<SVGSVGElement>, OmittedProps>;
-  svgStyle: React.CSSProperties;
-}
+type TIconContext = Omit<React.SVGProps<SVGSVGElement>, OmittedProps>;
 
-const defaultContext: TIconContext = {
-  svgProps: {
-    vectorEffect: 'non-scaling-stroke',
-    'aria-hidden': true,
-  },
-  svgStyle: {},
-};
+const defaultContext: TIconContext = {};
 
 const IconContext = createContext<TIconContext>(defaultContext);
 
