@@ -12,7 +12,7 @@ it('renders an icon', () => {
 
   let svg = document.querySelector('svg');
   expect(svg).toHaveAttribute('aria-hidden', 'true');
-  expect(svg).toHaveAttribute('vector-effect', 'non-scaling-stroke');
+  expect(svg).toHaveAttribute('focusable', 'false');
   expect(svg).toHaveStyle(
     'fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; width: 1em; height: 1em;',
   );
