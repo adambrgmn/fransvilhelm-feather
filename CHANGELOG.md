@@ -1,5 +1,27 @@
 # @fransvilhelm/feather
 
+## 2.0.0
+
+### Major Changes
+
+- Use svg props as context instead of separate props/style (by
+  [@adambrgmn](https://github.com/adambrgmn) in
+  [#27](https://github.com/adambrgmn/fransvilhelm-feather/pull/27))
+
+  Previously we separated svg props and svg styles in the context. But that is
+  no longer supported. Instead context is formatted as standard svg props.
+  Regular props, e.g. `aria-hidden` etc. are applied directly on the context.
+  Styles go under `context.styles`.
+
+### Patch Changes
+
+- Apply focusable false as default (by
+  [@adambrgmn](https://github.com/adambrgmn) in
+  [#27](https://github.com/adambrgmn/fransvilhelm-feather/pull/27))
+- Skip applying faulty vector effect (by
+  [@adambrgmn](https://github.com/adambrgmn) in
+  [#27](https://github.com/adambrgmn/fransvilhelm-feather/pull/27))
+
 ## 1.0.1
 
 ### Patch Changes
